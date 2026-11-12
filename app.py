@@ -174,10 +174,13 @@ st.header("SQL Queries")
 st.caption("The 20 predefined queries. Each question is shown with its SQL and its result. "
            "Queries that return rows show all rows.")
 
-
 @st.cache_data
 def run_query(sql):
-    return pd.read_sql(sql, engine)
+    import sqlite3
+    conn = sqlite3.connect(":memory:")
+    df.to_sql("loan_data", conn, index=False, if_exists="replace")
+    return pd.read_sql(sql, conn)
+
 
 
 def show_query(num, question, sql):
