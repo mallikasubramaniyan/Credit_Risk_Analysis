@@ -8,7 +8,7 @@ st.title("Credit Risk Analysis Dashboard")
 st.caption("Data source: MySQL database credit_risk, table loan_data")
 
 # ---------- 2.load csv-------------
-df = pd.read_csv("loan_data.csv")
+df = pd.read_csv("cleaned_loan_data.csv")
 
 
 # Show the columns in a logical order (same order as the cleaned table)
