@@ -8,25 +8,9 @@ st.set_page_config(page_title="Credit Risk Analysis", layout="wide")
 st.title("Credit Risk Analysis Dashboard")
 st.caption("Data source: MySQL database credit_risk, table loan_data")
 
-# ---------- 2. MySQL connection ----------
+# ---------- 2.load csv-------------
+df = pd.read_csv("loan_data.csv")
 
-url = URL.create(
-    "mysql+pymysql",
-    username="root",
-    password="Dhanvik14",
-    host="localhost",
-    database="credit_risk",
-)
-engine = create_engine(url)
-
-
-# ---------- 3. Load data (cached, so the database is read only once) ----------
-@st.cache_data
-def load_data():
-    return pd.read_sql("SELECT * FROM loan_data", engine)
-
-
-df = load_data()
 
 # Show the columns in a logical order (same order as the cleaned table)
 ordered_cols = [
@@ -339,9 +323,4 @@ st.markdown("""
 - Cash loans: **42.8%** (8,899 of 20,770)
 - Rates are Approved divided by all applications, including canceled ones.
 
-### 6. Limitations
-- The dataset has no age, income, education or occupation columns, so those analyses are not possible.
-- "High-risk" here means a high refusal rate, not actual repayment risk.
-- During cleaning, 3 columns (RATE_INTEREST_PRIMARY, RATE_INTEREST_PRIVILEGED, DAYS_FIRST_DRAWING) and 104 duplicate rows were removed.
-""")
-st.caption("Figures in this section are fixed values from the full dataset and do not change with the sidebar filters")
+
