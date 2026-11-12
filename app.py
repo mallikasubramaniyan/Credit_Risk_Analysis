@@ -1,7 +1,6 @@
 import streamlit as st
 import pandas as pd
-from sqlalchemy import create_engine
-from sqlalchemy.engine import URL
+
 
 # ---------- 1. Page setup ----------
 st.set_page_config(page_title="Credit Risk Analysis", layout="wide")
