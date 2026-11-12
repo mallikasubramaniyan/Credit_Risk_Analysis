@@ -321,5 +321,5 @@ st.markdown("""
 - Revolving loans: **50.6%** (2,837 of 5,611)
 - Cash loans: **42.8%** (8,899 of 20,770)
 - Rates are Approved divided by all applications, including canceled ones.
-
+""")
 
